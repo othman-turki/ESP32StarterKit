@@ -16,25 +16,7 @@ void setup()
     // wifiManager.connect();
 
     // Print a simple message
-    DEBUG_PRINT("Hello, world!");
-
-    // Print a message with a variable
-    int x = 5;
-    DEBUG_PRINT("The value of x is: ");
-    DEBUG_PRINT(x);
-
-    // Print a message with a newline
-    DEBUG_PRINTLN("This is a debug message with newline");
-
-    // Print a message with multiple variables
-    int y = 10;
-    float z = 3.14;
-    DEBUG_PRINT("The values are: x = ");
-    DEBUG_PRINT(x);
-    DEBUG_PRINT(", y = ");
-    DEBUG_PRINT(y);
-    DEBUG_PRINT(", z = ");
-    DEBUG_PRINT(z);
+    DEBUG_PRINTLN("Hello, world!");
 }
 
 void loop()
