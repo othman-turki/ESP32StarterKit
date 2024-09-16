@@ -2,7 +2,7 @@
 #define CONFIG_MACROS_H
 
 // Define a flag to enable or disable debug printing
-#define DEBUG_PRINT_FLAG 0
+#define DEBUG_PRINT_FLAG 1
 
 // Define a macro for debug printing
 #if DEBUG_PRINT_FLAG
