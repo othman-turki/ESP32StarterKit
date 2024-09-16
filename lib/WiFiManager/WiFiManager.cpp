@@ -1,16 +1,13 @@
 #include <WiFiManager.h>
-#include <Config.h>
+#include "config_macros.h"
 #include <Arduino.h>
 #include <WiFi.h>
 
-WiFiManager::WiFiManager()
-{
-    // Constructor initializes WiFiMulti object
-}
+WiFiManager::WiFiManager() {}
 
 void WiFiManager::addNetwork(const char *ssid, const char *password)
 {
-    _wifiMulti.addAP(ssid, password); // Add SSID and password to WiFiMulti
+    _wifiMulti.addAP(ssid, password);
 }
 
 void WiFiManager::connect()
