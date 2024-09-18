@@ -1,0 +1,14 @@
+{
+  "name": "WiFiManager",
+  "version": "1.0.0",
+  "description": "Library for managing multiple Wi-Fi networks on ESP32 devices.",
+  "authors": [
+    {
+      "name": "Othman Turki",
+      "email": "o.turki@advantryx.com",
+      "maintainer": true
+    }
+  ],
+  "frameworks": "arduino",
+  "platforms": ["espressif32"]
+}
