@@ -30,7 +30,7 @@ public:
      * the Wi-Fi connection is lost and to reattempt connecting to a network.
      */
     WiFiManager(uint8_t maxAttempts, uint32_t delayBetweenAttempts,
-                uint16_t reconnectInterval);
+                uint16_t reconnectInterval, uint16_t maxReconnectInterval);
 
     /**
      * @brief Default constructor to initialize the Wi-Fi manager with default
@@ -63,7 +63,6 @@ public:
     void addNetwork(const char *ssid, const char *password);
 
     void connect();
-    bool isConnected();
     void handleReconnection();
 
 private:
@@ -102,6 +101,10 @@ private:
      */
     uint16_t _reconnectInterval;
 
+    uint16_t _currentReconnectInterval;
+
+    uint16_t _maxReconnectInterval;
+
     /**
      * @brief Timestamp of the last reconnection attempt.
      *
@@ -133,6 +136,10 @@ private:
      */
     WiFiMulti _wifiMulti;
 
+    void tryToConnect();
+
+    bool isConnected() const;
+
     /**
      * @brief Helper function to restart the ESP32.
      *
@@ -147,8 +154,6 @@ private:
      * loop when the Wi-Fi network is not available.
      */
     void restartESP();
-
-    void tryToConnect();
 };
 
 #endif // WIFI_MANAGER_H

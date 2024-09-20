@@ -52,6 +52,19 @@
 #define PROJECT_DEBUG_PRINTLN(...)
 #endif
 
+#if PROJECT_DEBUG_PRINT_FLAG
+#define PROJECT_DEBUG_PRINTF(fmt, ...)                        \
+    do                                                        \
+    {                                                         \
+        char buffer[256];                                     \
+        snprintf(buffer, sizeof(buffer), fmt, ##__VA_ARGS__); \
+        Serial.print("[DEBUG] ");                             \
+        Serial.print(buffer);                                 \
+    } while (false)
+#else
+#define PROJECT_DEBUG_PRINT(fmt, ...)
+#endif
+
 /**
  * @def MAX_CONNECTION_ATTEMPTS
  * @brief Maximum number of connection attempts to make before restarting
@@ -70,6 +83,13 @@
  * @brief Interval in milliseconds between reconnection attempts after Wi-Fi
  * connection is lost.
  */
-#define RECONNECTION_INTERVAL_MS 10000
+#define RECONNECTION_INTERVAL_MS 5000
+
+/**
+ * @def MAX_RECONNECT_INTERVAL_MS
+ * @brief Maximum interval in milliseconds between reconnection attempts after
+ * Wi-Fi connection is lost.
+ */
+#define MAX_RECONNECT_INTERVAL_MS 60000
 
 #endif // PROJECT_MACROS_H

@@ -21,4 +21,9 @@ void loop()
 {
     // Handle reconnection if Wi-Fi is lost
     wifiManager.handleReconnection();
+    if (wifiManager.isReconnected == true)
+    {
+        Serial.println("Reconnected to Wi-Fi! Howdy!");
+        wifiManager.isReconnected = false;
+    }
 }
