@@ -6,6 +6,8 @@
 class WiFiManager
 {
 public:
+    bool isReconnected = false;
+
     /**
      * @brief Constructor to initialize the Wi-Fi manager.
      *
@@ -112,6 +114,15 @@ private:
     unsigned long _lastReconnectAttempt = 0;
 
     /**
+     * @brief Flag to indicate if the Wi-Fi connection is lost.
+     *
+     * @details
+     * This property is used to keep track of if the Wi-Fi connection is lost
+     * and needs to be reconnected.
+     */
+    bool _isConnectionLost = false;
+
+    /**
      * @brief Instance of the WiFiMulti class used to manage multiple Wi-Fi
      * networks.
      *
@@ -122,7 +133,21 @@ private:
      */
     WiFiMulti _wifiMulti;
 
+    /**
+     * @brief Helper function to restart the ESP32.
+     *
+     * @details
+     * This function restarts the ESP32 by calling the `ESP.restart()`
+     * function. This is used to restart the ESP32 after a connection attempt
+     * fails.
+     *
+     * @note
+     * This function is used to restart the ESP32 after a connection attempt
+     * fails. This is used to prevent the ESP32 from going into an infinite
+     * loop when the Wi-Fi network is not available.
+     */
     void restartESP();
+
     void tryToConnect();
 };
 

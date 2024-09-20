@@ -42,12 +42,21 @@ void WiFiManager::handleReconnection()
             (unsigned long)_reconnectInterval)
         {
             _lastReconnectAttempt = millis();
+            _isConnectionLost = true;
             PROJECT_DEBUG_PRINTLN("Wi-Fi disconnected. Attempting reconnection...");
             _wifiMulti.run();
         }
     }
+    else
+    {
+        if (_isConnectionLost)
+        {
+            PROJECT_DEBUG_PRINTLN("Wi-Fi reconnected.");
+            isReconnected = true;
+            _isConnectionLost = false;
+        }
+    }
 }
-
 void WiFiManager::tryToConnect()
 {
     int attempt = 0;
@@ -62,6 +71,7 @@ void WiFiManager::tryToConnect()
     if (WiFi.status() == WL_CONNECTED)
     {
         PROJECT_DEBUG_PRINTLN("Connected to Wi-Fi!");
+        // _isConnected = true;
     }
     else
     {
