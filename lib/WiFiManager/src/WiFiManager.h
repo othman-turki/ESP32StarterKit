@@ -33,8 +33,8 @@ private:
     uint8_t _maxConnectionAttempts;
     uint32_t _connectionAttemptDelay;
     uint16_t _reconnectionInterval;
-    uint16_t _currentReconnectionInterval;
     uint16_t _maxReconnectionInterval;
+    uint16_t _currentReconnectionInterval;
     unsigned long _lastReconnectAttempt = 0;
     bool _isConnectionLost = false;
     bool _isReconnected = false;
